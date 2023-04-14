@@ -1,0 +1,379 @@
+
+API.- Interfaz de programación de aplicaciones (DE UNA SOLO FORMA)
+SON INTERFACES PARA QUE PROGRAMAS DE SOFTWARE SE COMUNIQUEN ENTRE ELLOS Y COMPARTAN DATOS BAJO CIERTOS STANDARES EL MAS USADO ES REST Y EL FORMATO MAS USADO PARA ENVIAR DATOS ES JSON
+
+TIPOS DE API LOCALES REMOTAS
+LOCALES.- SON LAS QUE EJECUTAN DENTRO DEL MISMO ENTORNO
+REMOTAS.- ESTAN EN OTRO PUNTO Y PUEDEN USAR SERVICIOS WEB(SISTEMA DE COMUNICACION EN UNA RED UTILIZANDO EL PROTOCOLO HTTP) USANDO PROTOCOLOS SOAP O REST O EN DIA REST ES LA ARQUITECTURA NO ES PROTOCOLO LA ARQUITECTURA MAS USADA PARA APIS. (CUANDO CREAMOS UN SERVICIO WEB UTILIZANDO LA ARQUITECTURA REST ESTAMOS HABLANDO DE RESTFULL.
+PARA CUANDO ESTAMOS DESARROLLANDO APIREST DEBEMOS COMPRENDER CONCEPTOS  
+
+DISEÑO EN ANYPOINT, IMPLEMENTAR EN ANYPOINT STUDIO, DESPLOYORLA EN CLOUD HOUB, MONITOREAR MONITORING EN ANYPOINT PLATFORM 
+
+API MANAGEMENT.- El proceso de publicar, promocionar y supervisar APIS en un entorno seguro y escalable. Además, el término incluye todos aquellos recursos enfocados a la creación, documentación y socialización.
+
+ANYPOINT-PLATFORm.- Plataforma tecnológica de integración que fomenta una metodología de gestión de API a través de ella que facilite la utilización de sus API y la reutilización de las mismas.
+
+API LED CONNECTIVITY.- Es una forma de conectar datos y aplicaciones a través de API reutilizables y funcionalmente completas. Estas API se desarrollan para jugar un rol específico convirtiendo datos en procesos y ofreciendo distintos métodos de integración.
+API LED CONECTIVITY se basa en generar assets reutilizables y sobre una arqauitectura de 3 capas:
+
+1.-EXPERIENCE API.- Esta capa es la que los sistemas consumidores utilizan, está orientada al consumidor de forma que facilite y optimice la integración según sus necesidades, además se desarrollan pensando en la reutilización por parte de consumidores similares.
+adicionalmente, el diseño escalable de esta capa permite incorporar nuevos consumidores sin impactar en los existentes y reutilizando la lógica implementada en las capas inferiores.
+2.- PROCESS API.- En esta capa intermedia se desarrollan APIS dedicadas a implementar la lógica de los procesos de negocio. Son reutilizables por todas las EXPERIENCE APIS de la capa superior y orquestan las invocaciones a las diferentes SYSTEM APIS de la capa inferior.
+La incorporación de nuevos procesos de negocio a través de nuevas PROCESS APIS no impacta a los componentes existentes y los nuevos componentes pueden reutilizar las SYSTEMS APIS existentes si fuece necesario. 
+La comunicación entre este PROCESS API y los SYSTEM API se realiza a través de REST.
+3.- SYSTEM API.- Es la capa de servicios que proporcionará conectividad con los sistemas finales, oirientada totalmente a las características del BACKEND tambien llamada capa de micro-servicios. Son APIS dedicadas a ejecutar operaciones en los sistemas proveedores.
+Además, son reutilizables por todas las PROCESS APIS y la necesidad de ejecutar nuevas operaciones existentes, no impacta en las operaciones exixtentes. cada SYSTEM API conecta con un sistema proveedor.
+
+
+REST. Es una ARQUITECTURA bajo la cual se puede construir un API
+
+RESTFULLAPI. Es una API que está construida utilizando la ARQUITECTURA de REST; cuando implementamos nuestra API utilizando REST como lógica de implementación se dice que tenemos una RESTFULLAPI
+funcionan estrictamente bajo una arquitectura cleinte/servidor utilizando HTTP como protocolo de comunicación, en esta comunicación un cliente puede ser nosotros utilizando y revisando
+requerimientos desde una app, web o movil y el servidor es el que recibirá nuestros requerimientos y ejecutará las acciones acorde a nuestra petición, pero cuando nosotros realizamos un requerimiento, como sabe el servidor que acciones ejecutar aqui es donde entra en juego las especificaciones de REST, en REST cada procedimientos de nuestra API está compuesto por tres partes importantes: 1.-verbo http, 2.- Dirección uri y (datos xml, json y binary) la informacion necesaria que requiere el servidor para satisfacer el requerimiento incluyendo la información de autenticación del cliente, los verbos http son identificadores que determinan el objetivo de un requirimiento del cliente, entre los verbos HTTP mas utilizados: GET, POST, PUST/PATCH Y DELATE, GET se utiliza para procedimientos que devuelven información al cliente.
+POST se utiliza para que el cliente pueda crear servicios dentro del servidor, como agregar registros dentro de una database, PUT y PATCH, se utilizan para que el cliente pueda editar recursos ya existentes dentro del servidor y finalmente 
+DELATE se utiliza para eliminar recursos dentro del servidor.
+CRUD.- creas, lees(read), actualizas y eliminas.
+Lo interesante de REST es que la implementación de estos procedimientos de servidor no le interesa al cliente ni al servidor le interesan las implementaciones dentro del cliente para realizar los requerimientos, son como dos cajas negras intercambiando información entre sí, es decir a ninguno le importa een que lenguaje está programado el otro o que fremworks utiliza el otro  y esto se puede logar debido a que en la lógica REST el servidor debio recibir la información necesaria para poder ejecutar cada requerimiento esto conlleva a tener que definir un formato de intercambio de datos entre las dos partes este formato debe ser flexible y puede ser jason xml  formato binario o texto plano siendo json el preferido por la comunidad.
+Debido a que el servidor necesita que cada requerimiento tenga la informacion necesaria para poder ejecutar un procedimiento se dice que REST ES STATELESS ya que no se necesita guardar información o el estado de peticiones anteriores para poder satisfacer peticiones nuevas cada
+petición es independiente de otras, e aí el significado de sus siglas REpresentationalStateTransfer, sin embargo la arquitectura RESTsi admite la implementación de caché para guardar la respuesta de peticiones hechas con anterioridad y de esta forma utilizarla para satisfacer nuevas peticiones de los mismos recursos de manera rápida esto se utiliza en los requerimientos de tipo GET la ventaja de implementar APIS bajo la lógica REST es que obtendremos apis de fácil mantenimiento y escalables 
+REST logica de restricciones y recomendaciones bajo la cual se puede construir una api sin olvidar que REST no es un fremwork ni un protocolo ni tampoco está atado a ningún lenguaje de programación es una lógica de restricciones y recomendaciones bajo la cual se construyen apis resultando en RESTFULLAPIS.
+
+Tipos de API según su finalidad
+
+APIs de sistemas: las API de sistemas desbloquean datos de los sistemas centrales de registro dentro de una organización. Los sistemas ERP, de clientes y de facturación, así como las bases de datos privadas, son ejemplos de sistemas clave en los que las API pueden desbloquear datos. 
+
+APIs de procesos: las API de procesos interactúan con los datos y los compilan en un solo sistema o a través de varios, acabando así con los silos. Este tipo de API permite combinar datos y coordinar varias API de sistemas para fines empresariales específicos. Un ejemplo de este proceso es la creación de una vista completa de los clientes, el despacho de pedidos y el estado de los envíos. 
+
+APIs de experiencias: las API de experiencias proporcionan contexto empresarial para los datos y procesos desbloqueados y establecidos con APIs de sistemas y procesos. Las API de experiencias exponen los datos para que pueda utilizarlos la audiencia de destino, como en aplicaciones móviles, portales internos para datos de clientes, etc.
+
+CICLO DE VIDA API
+1.-Plan  2.-Develop  3.-Test  4.-Depoly  5.-Retire
+
+CRUD
+Create--post--201
+Reed-- get--200
+Update-- Patch-actualiza parte del objeto/Put-actualiza todo el objeto=200
+Delate--Delate=200
+
+ESTRUCTURA DE JSON
+{
+"formato de fecha":"D-M-Y"
+}
+-/-%-/-%-/-%-/-%-/-%-/-%-/-%-/-%-/-%-/-%-/-%-/-%-/-%-
+
+/usuarios
+post -crear un objeto de  usuario- id, nombre, ap, am, rfc, colonia
+/{id_usuario}
+get -obtener datos de usuario- id, nombre, ap, am, rfc, colonia
+patch- actualiza una parte del objeto usuario
+put- actualiza todo el objeto usuario
+delate- elimina todo el objeto usuario
+
+array es listado [index]
+
+uriparam acmebank.com/usuarios/iazc?tiposbancarios&banco=bbva=queryparams
+queryparam son parametros de consulta
+
+
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+EXPERIENCIA EN MULESOFT.-me ha tocado hacer la implentacion y el despliegue del aplicativo en la herramienta, es decir estructutar la entradas y salidas de endpoints utilizando como metodologias lo que es open api y redful implementandolo en el anypoint, 1.- diseñamos en el api en el design center de mulesoft, hacemos el diseño el raml y descargamos el ramel en el anypoint hay vemos la informacion que va a entrar y cual es la informacion que vamos a responder respecto aun codigo http como 200 201, 400 etc. despues desplegamos en el run time de mule soft, para que esté en publico en internet ese servicio.
+
+el control de versiones lo llevo en git y utilizo git flow creo fishus o ramas respecto a los archivos que hay en el ambiente de develop y con eso trabajo para cuando otros programadores suban sus cambios lo podamos mezclar y asi desplegarlo en el runtime para posteriormente pasarlo a los siguientes ambientes como ambiente de relest y finalmente el productivo.
+
+api testing.- son pruebas que se le hacen a las apis esto lo hacemos con postman hacemos una coleccion la cual va a correr y respectop a los resultados que se le envien tiene que coincidir que conteste bien o mal el api ejemplo si tenemos un servicio que recibe numeros telefonicos y le mandaste puros numeros tiene que responder mal, es decir un 401 que es un patch request entonces hacemos diferentes pruebas para ver que los servicios se comporten como deben.
+
+MONGODB.- Es un sistema de base de datos NoSQL, orientado a documentos y de código abierto.
+
+En lugar de guardar los datos en tablas, tal y como se hace en las bases de datos relacionales, MongoDB guarda estructuras de datos JSON (una especificación similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida.
+MongoDB guarda la estructura de los datos en documentos BSON con un esquema dinámico, lo que implica que no existe un esquema predefinido. Los elementos de los datos se denominan documentos y se guardan en colecciones. Una colección puede tener un número indeterminado de documentos. Comparando con una base de datos relacional, se puede decir que las colecciones son como tablas y los documentos son registros en la tabla. La diferencia es que en una base de datos relacional cada registro en una tabla tiene la misma cantidad de campos, mientras que en MongoDB cada documento en una colección puede tener diferentes campos. En un documento, se pueden agregar, eliminar, modificar o renombrar nuevos campos en cualquier momento,22​ ya que no hay un esquema predefinido. La estructura de un documento es simple y compuesta por pares llave/valor, parecido a las matrices asociativas en un lenguaje de programación, esto es debido a que MongoDB sigue el formato de JSON. En MongoDB la clave es el nombre del campo y el valor es su contenido, los cuales se separan mediante el uso de “:”, tal y como se puede ver en el siguiente ejemplo. Como valor se pueden usar números, cadenas o datos binarios como imágenes o cualquier otro.
+
+JENKINS.- compilar y probar proyectos de software de forma continua; Escrito en Java, entrega de software a través de la automatización,
+Cada cambio que realiza un desarrollador (ya sea una resolución de un bug, la creación de una nueva funcionalidad, etc.) se comprueba compilando el código fuente y obteniendo un ejecutable (llamado build). Si es validado, será incorporado al código fuente y desplegado.
+
+Que se puede hacer con Jenkins?
+Automatizar la compilación y testeo de software.
+Notificar a los equipos correspondientes la detección de errores.
+Desplegar los cambios en el código que hayan sido validados.
+Hacer un seguimiento de la calidad del código y de la cobertura de las pruebas.
+Generar la documentación de un proyecto.
+
+SCRUM METODOLOGÍA AGIL
+Sprint.- Duracioón de dos semanas
+Planing.- Que voy hacer
+Refinamiento.- Que haré en el siguiente sprint
+Daily.- Que hice? bloqueante,
+Review.- Presentar avance
+Retrospectiva.- En que puedo mejor
+ROLES
+*Scrum master
+*Product owner
+*Stake holders
+
+JPA La API de eprsistencia de JAVA es una especificación  que indica  como se debe  hacer la persistencia o almacenamiento de los objetos en una aplicación construida en JAVA.
+
+
+
+
+  / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
+
+--DATA WAEVE--
+DataWeave es el lenguaje de programación diseñado por MuleSoft para la transformación de datos. También es el lenguaje de expresión que utiliza el motor de tiempo de ejecución de Mule para configurar componentes y conectores.
+DataWeave le permite aprovechar los beneficios de la programación funcional, que incluyen:
+
+Funciones puras que siempre producen el mismo resultado con la misma entrada, lo que facilita su depuración.
+
+Variables inmutables que no cambian su valor durante la ejecución, agregando estabilidad a su código.
+
+Firmas de función que brindan transparencia adicional sobre lo que afecta la ejecución de una función, porque las funciones puras dependen solo de sus parámetros de entrada para producir un resultado.
+
+Los lenguajes funcionales producen código que es más fácil de mantener porque el código es conciso y claro.
+
+Una estrategia de llamada por necesidad (también conocida como evaluación diferida) que mejora el rendimiento, porque las expresiones se evalúan solo cuando se necesitan y su resultado se almacena para evitar evaluar una expresión varias veces si los parámetros de entrada son los mismos.
+
+--Conceptos básicos del lenguaje DataWeave--
+
+DataWeave incorpora conceptos que son comunes a la mayoría de los lenguajes de programación. Todos los scripts de DataWeave constan de un encabezado que contiene directivas importantes, incluido el formato de salida de la transformación, y un cuerpo que contiene la expresión para generar un resultado.
+
+DataWeave admite diferentes estructuras de datos, incluidos tipos simples, complejos y compuestos. En la mayoría de sus transformaciones de DataWeave, utiliza selectores de datos, operadores de datos y funciones junto con arreglos y objetos para realizar asignaciones o transformaciones de datos.
+
+También puede importar módulos DataWeave preconstruidos para ampliar el conjunto de funciones disponibles para usar en sus scripts.
+
+--Arquitectura de un script de DataWeave--
+
+Un script de DataWeave consta de un encabezado y un cuerpo, separados por tres guiones (---). El encabezado contiene directivas de idioma (importar, por ejemplo), define el formato de salida de la transformación y también puede contener declaraciones de variables y funciones. El cuerpo contiene la expresión que produce la salida resultante, generalmente una asignación de datos o una transformación.
+
+Este es un ejemplo de una transformación básica de DataWeave:
+%dw 2.0
+output application/json
+---
+payload
+
+--Tipos de datos--
+DataWeave representa datos usando valores, cada uno de los cuales tiene un tipo de datos asociado. El sistema de tipos le permite aplicar restricciones a variables y parámetros de funciones. Los tipos de datos admitidos incluyen tipos simples como String, Boolean, Number y Date, así como tipos compuestos y complejos como Array, Object y Any.
+Para obtener una lista completa de todos los tipos de datos admitidos, consulte Tipo de sistema.
+
+--Selectores de datos--
+Los selectores de datos le permiten acceder a campos dentro de una estructura de datos para que pueda recuperar datos de la carga útil o cualquier otra variable creada durante la ejecución del script DataWeave. Los diferentes tipos de selectores le brindan una variedad de opciones que puede usar para extraer datos de estructuras.
+
+Por ejemplo, puede usar el selector de valor único payload.userName para recuperar el valor único nombre de usuario, donde nombre de usuario representa una clave real en el mensaje de entrada.
+
+Consulte Selectores para obtener una lista completa de los selectores de datos y su uso.
+
+--Funciones--
+Una función es un bloque de código que contiene un grupo de operaciones que se ejecutan cuando se llama a la función en su aplicación. Las funciones pueden aceptar diferentes parámetros como entrada que luego pueden ser utilizados por las operaciones definidas en la función. Además, cada función devuelve un valor después de que finaliza el procesamiento, y este valor se puede usar como entrada para una función diferente.
+
+Cada secuencia de comandos de DataWeave que escriba en cualquier componente (como un componente Transformar mensaje o Establecer carga útil) funciona como un programa independiente, lo que significa que todas las definiciones y llamadas de funciones son únicas para la secuencia de comandos definida en el componente.
+ 
+Consulte Definir funciones de DataWeave para obtener detalles adicionales sobre la definición de funciones.
+
+--Definición de función frente a llamada de función--
+DataWeave le permite definir sus propias funciones en el encabezado del script, creando un modelo para el proceso que define las operaciones que se ejecutan en la llamada de función. También puede definirlos en los archivos de mapas y módulos de DataWeave.
+
+Cuando llama a una función desde una expresión de DataWeave, le está indicando a DataWeave que ejecute todas las operaciones definidas en esa función en ese punto exacto de la ejecución del script.
+
+Por ejemplo, superior es una función integrada definida en el módulo String. Puede llamar a esta función para convertir un valor de texto a mayúsculas. Además, puede usar un selector para recuperar un valor de la carga útil y luego ejecutar la llamada a la función upper() con este valor como parámetro de entrada upper(payload.someKey).
+
+DataWeave admite tanto la notación de prefijos (función (param1, param2)) como la notación de infijos (param1 función param2) para llamadas a funciones. Tenga en cuenta que puede usar la notación infija solo con funciones que aceptan solo dos parámetros.
+Véase también Firmas de funciones.
+
+--Operadores de datos--
+Los operadores de datos son símbolos que le permiten realizar operaciones en los datos para producir un resultado. DataWeave admite operadores que son comunes en la mayoría de los lenguajes de programación como matemáticos (+, -, /, *), relacionales (<, >, <=, >=, ==, ~=) y lógicos (no, ! y, o) operadores.
+
+DataWeave también es compatible con los siguientes operadores:
+
+Agregar (<<, +), Anteponer (>>) y Eliminar (-), que le permiten administrar datos en una matriz.
+
+Operadores de control de alcance y flujo (do, using, if, else) que le permiten crear un alcance donde se pueden declarar nuevas variables y funciones, o ejecutar una expresión basada en una condición.
+
+Actualizar (update), que le permite actualizar campos específicos de una estructura de datos.
+
+Consulte Operadores de DataWeave para obtener una lista completa de los operadores admitidos, su uso y ejemplos.
+
+--Importar módulos de funciones--
+De forma predeterminada, los scripts de DataWeave importan el módulo de función dw::Core. Para usar funciones de diferentes módulos, importe los módulos a su secuencia de comandos agregando la directiva de importación.
+
+Consulte la Referencia de DataWeave para obtener instrucciones sobre el uso de la directiva de importación.
+
+--Arreglos--
+Una matriz es una estructura de datos que puede contener cualquier número de elementos de los tipos de DataWeave admitidos. Para declarar una matriz, use corchetes ([ y ]) para encerrar una lista de elementos separados por comas, por ejemplo: [1,2,3].
+
+Las matrices también admiten la aplicación de lógica condicional para definir elementos condicionales ([(value1) if condition]). Por ejemplo, la expresión [(1) si es verdadero, (2) si es falso, (3) si carga útil != nulo] define la matriz [1,3] (suponiendo que la carga útil no sea nula).
+
+--Objetos--
+Un objeto es una colección de cero o más pares de clave y valor:
+
+Clave, que está formada por:
+
+Nombre, compuesto por un valor de cadena como nombre local y un espacio de nombres opcional.
+
+Atributos, una colección de cero o más pares Nombre:valor, donde valor puede ser cualquier valor posible.
+
+Valor, que comprende cualquier tipo admitido, incluido otro objeto, una llamada de función o una matriz.
+
+Para declarar un objeto, use llaves ({ y }) para encerrar una lista separada por comas de pares Clave:valor:
+
+{
+  keyName @(keyAttributeName :"keyAttributeValue"): "value",
+  User @(role:"admin"): upper("max the mule"),
+  myArray: [1,2,3]
+}
+
+==Los objetos también admiten la definición de elementos condicionales:==
+{
+ (userName: name) if !isBlank(name),
+ (userRole: role) if !isBlank(role)
+}
+
+
+- - - - - - - - - -
+#%RAML 1.0
+title: API para operaciones de usuario
+baseUri: acme/bank
+mediaType:
+  - application/json
+version: "1"
+protocols:
+  - HTTP
+/paises/{id_pais}/estados/{id_estado}/municipios/:
+  get:
+    displayName: Consulta de miunicipios
+    description: Esta api va a regresar la consulta de municipios usando un id de país
+    responses:
+      "200":
+        body:
+          application/json:
+            description: listado de municipios
+            items:
+              properties:
+                municipio:
+                  description: entidad
+                  properties:
+                    id_municipio:
+                      example: 1
+                      type: number
+                      format: int
+                    nombre:
+                      description: nombre de municipio
+                      example: Xalapa
+                      type: string
+  uriParameters:
+    id_estado:
+      example: 1
+      type: number
+      format: int
+    id_pais:
+      example: 1
+      type: number
+      format: int
+/paises/usuarios/{id_usuario}/colonias/{id_colonia}:
+  get:
+    displayName: listado de colonias y listado de usuarios
+    securedBy: []
+  uriParameters:
+    id_usuario:
+      description: identificador de usuario
+      example: 1
+      type: number
+      format: int
+    id_colonia:
+      description: nombre de la colonia
+      example: Casa Blanca
+      type: string
+/usuarios:
+  post:
+    displayName: creacion de usuario
+    description: este servicio se permite alta de usuarios
+    body:
+      description: campos del usuario
+      properties:
+        nombre:
+          description: nombre usuario
+          example: Fernando
+          type: string
+        a.p:
+          description: apellido paterno del usuario
+          example: De Ita
+          type: string
+        a.m:
+          description: apellido materno del usuario
+          example: Zetina
+          type: string
+        Usuario:
+          description: alias del usuario
+          example: Necaxista
+          type: string
+        contraseña:
+          description: clave del usuario
+          example: 123456
+          type: number
+          format: int
+        r.f.c:
+          description: registro federal del contribuyente
+          example: IAZC
+          type: string
+        usuariocol:
+          description: colonia del usuario
+          example: Casa Blanca
+          type: string
+    responses:
+      "201": {}
+/usuarios/{id_usuario}:
+  uriParameters:
+    id_usuario:
+      example: 123456
+      type: number
+      format: int
+  get:
+    displayName: obtiene datos del usuario
+    description: este servicio permite obtener los datos del usuario
+    body: {}
+    responses:
+      "200":
+        body: {}
+  patch:
+    displayName: actualiza parcialmente los datos del objeto usuario
+    description: este servicio actualiza parcialmente los datos del objeto usuario
+    body:
+      application/json:
+        example:
+          {
+            "nombre":""
+          }
+    responses:
+      200:
+  put:
+    displayName: actuliza todo
+    description: este servicio actualiza todos los datos del objeto usuario
+    body:
+      application/json:
+        example:
+          {
+            "nomre":"Fernando",
+            "ap":"De Ita",
+            "am":"Zetina",
+            "usuario":"Necaxista",
+            "contraseña":"123456",
+            "r.f.c":"IAZC",
+            "usuariocol":"Casa Blanca"
+          }
+    responses:
+      200:
+  delete:
+    displayName: borra
+    description: este servicio elimina el objeto usuario
+    responses:
+      200:
+        
+
+
+            
+
+    
+    
